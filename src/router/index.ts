@@ -1,17 +1,5 @@
-import {createRouter, createWebHistory, Router, RouteRecordRaw, RouterOptions} from "vue-router";
-
-const routes: Array<RouteRecordRaw> = [
-    {
-        name: "Home",
-        path: "/",
-        component: () => import("@/views/Home.vue")
-    },
-    {
-        name: "Page",
-        path: "/page",
-        component: () => import("@/views/Page.vue")
-    }
-]
+import {createRouter, createWebHistory, Router, RouterOptions} from "vue-router";
+import routes from "@/router/routes";
 
 const routerOptions: RouterOptions = {
     history: createWebHistory(),
@@ -19,4 +7,10 @@ const routerOptions: RouterOptions = {
 }
 
 const router: Router = createRouter(routerOptions)
+
+router.beforeEach((to, from, next) => {
+    document.title = (to.meta.title || "appendoc") as string
+    next();
+});
+
 export default router;
