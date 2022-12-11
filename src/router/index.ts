@@ -9,7 +9,7 @@ const routerOptions: RouterOptions = {
 const router: Router = createRouter(routerOptions)
 
 router.beforeEach((to, from, next) => {
-    document.title = (to.meta.title || "appendoc") as string
+    document.title = (to.meta.title || "Appendoc") as string
     next();
 });
 
